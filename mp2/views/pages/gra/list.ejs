@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MP1</title>
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+    <%- include('../../fragments/header.ejs') %>
+
+    <main>
+        <h2>Lista gier</h2>
+        <table class="table-list">
+            <thead>
+                <th>Nazwa</th>
+                <th>Data premiery</th>
+                <th>Opis</th>
+                <th>Długość</th>
+                <th>Akcje</th>
+            </thead>
+            <tbody>
+                <% for (let game of games) { %>
+                    <tr>
+                        <td><%- game.name %></td>
+                        <td><%- game.release_date.toISOString().split('T')[0] %></td>
+                        <td><%- game.description %></td>
+                        <td><%- game.length %></td>
+                        <td>
+                            <ul class="list-action">
+                                <li><a href="/games/details/<%=game.id%>" class="list-action-button-details">Szczegoły</a></li>
+                                <li><a href="/games/edit/<%=game.id%>" class="list-action-button-edit">Edytuj</a></li>
+                                <li><a href="#" class="list-action-button-delete" onclick="deleteGame('<%=game.id%>')">Usuń</a></li>
+                            </ul>
+                        </td>
+                    </tr>
+                <% } %>
+            </tbody>
+        </table>
+        <!-- <p>Brak rekordow</p> -->
+        <p><a href="/games/add" class="button-add">Dodaj nowa gre</a></p>
+    </main>
+    <% if (message != null) { %>
+        <div class="alert">
+            <%= message %>
+        </div>
+    <% } %>
+    <%- include('../../fragments/footer.ejs') %>
+    <script>
+        function deleteGame(game) {
+            if (confirm('Czy na pewno chcesz usunąć tą gierę?')) {
+                window.location.href = '/games/delete/' + game;
+            }
+            alert('Gra zostala usunieta');
+        }
+
+        let alert = document.querySelector('.alert')
+        if(alert !== null){
+            if(alert.style.display = 'block') {
+                setTimeout(() => {
+                    alert.style.display = 'none';
+                }, 1500);
+            }
+        }
+    </script>
+</body>
+</html>

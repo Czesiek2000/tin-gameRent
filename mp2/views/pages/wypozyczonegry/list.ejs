@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MP1</title>
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+    <%- include('../../fragments/header.ejs') %>
+    
+    <main>
+        <h2>Szczegóły wypożyczenia</h2>
+        <table class="table-list">
+            <thead>
+                <td>Użytkownik</td>
+                <td>Telefon</td>
+                <td>Tytuł gry</td>
+                <td>Ile</td>
+                <td>Do kiedy</td>
+                <td>Akcje</td>
+            </thead>
+            <% for(let rent of gameRents) {%>
+                <tr>
+                    <td><%= rent.firstname %> <%= rent.lastname %></td>
+                    <td><%= rent.phonenumber %></td>
+                    <td><%= rent.name %></td>
+                    <td><%= rent.game_count %></td>
+                    <td><%= rent.to_when.toISOString().split('T')[0] %></td>
+                    <td>
+                        <ul class="list-action">
+                            <li><a href="/gameRent/details/<%=rent.grid%>" class="list-action-button-details">Szczegoły</a></li>
+                            <li><a href="/gameRent/edit/<%=rent.grid%>" class="list-action-button-edit">Edytuj</a></li>
+                            <li><a href="#" class="list-action-button-delete" onclick='deleteGameRent("<%=rent.grid%>")'>Usuń</a></li>
+                        </ul>
+                    </td>
+                </tr>
+            <% } %>
+        </table>
+        
+        <div class="form-buttons">
+            <a href="/gameRent/add" class="form-button button-add">Dodaj nowe wypozyczenie</a>
+        </div>
+    </main>
+    <% if (message != null) { %>
+        <div class="alert">
+            <%= message %>
+        </div>
+    <% } %>
+
+    <%- include('../../fragments/footer.ejs') %>
+    <script>
+        function deleteGameRent(id) {
+            if(confirm("Czy na pewno chcesz usunąć wypożyczenie?")) {
+                window.location.href = "/gameRent/delete/" + id;
+            }
+        }
+        
+        let alert = document.querySelector('.alert')
+        if(alert !== null){
+            if(alert.style.display = 'block') {
+                setTimeout(() => {
+                    alert.style.display = 'none';
+                }, 1500);
+            }
+        }
+    </script>
+</body>
+</html>

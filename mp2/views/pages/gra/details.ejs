@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MP1</title>
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+    <%- include('../../fragments/header.ejs') %>
+    <main>
+        <h2><%= pageTitle %></h2>
+        <form class="form">
+            <label for="nazwa">Nazwa <span class="symbol-required">*</span></label>
+            <input type="text" value="<%= game.name %>" disabled />
+            <span id="errorName" class="errors-text"></span>
+            <label for="dataPremiery">Data premiery <span class="symbol-required">*</span></label>
+            <input type="date" value="<%= game.release_date %>" disabled>
+            <span id="errorReleaseDate" class="errors-text"></span>
+            <label for="opis">Opis <span class="symbol-required">*</span></label>
+            <textarea type="text" disabled cols="30" rows="10"><%= game.description %></textarea>
+            <span id="errorDescription" class="errors-text"></span>
+            <label for="dlugosc">Długość</label>
+            <input type="text" value="<%= game.length %>" disabled>
+            <span id="errorLength" class="errors-text"></span>
+            <div class="form-buttons">
+                <p id="errorsSummary" class="errors-text"></p>
+                <% if(formMode != 'showDetails') { %>
+                    <input type="submit" class="form-button-submit" value="<%= btnLabel %>">
+                    <a href="/games" class="form-button-cancel">Anuluj</a>
+                <% } else { %>
+                    <a href="/games" class="form-button-cancel">Powrót</a>
+                <% } %>
+            </div>
+        </form>
+
+        <h2>Lista uzytkowników</h2>
+        <% if(game.users.length !== 0) { %>
+            <table class="table-list">
+                <thead>
+                    <th>Nazwa</th>
+                    <th>Data premiery</th>
+                    <th>Opis</th>
+                    <th>Długość</th>
+                </thead>
+                <tbody>
+                    <% for (let user of game.users) { %>
+                        <tr>
+                            <td><a href="/users/details/<%= user.user_id %>"><%= user.user.firstname %></a></td>
+                            <td><%= user.user.lastname %></td>
+                            <td><%= user.user.email %></td>
+                            <td><%= user.user.phonenumber %></td>
+                        </tr>
+                    <% } %>
+                </tbody>
+            </table>
+        <% } else { %>
+            <p>Brak użytkowników</p>
+        <% } %>
+    </main>
+    <%- include('../../fragments/footer.ejs') %>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+    <%- include('../../fragments/header.ejs') %>
+    <main>
+        <h2>Szczegoły uzytkownika</h2>
+        <form class="form">
+            <label for="imie">Imie</label>
+            <input type="text" name="imie" id="imie" value="<%= gameRent.user.firstname %>" disabled>
+            <span id="errors-text"></span>
+
+            <label for="nazwisko">Nazwisko</label>
+            <input type="text" name="nazwisko" id="nazwisko" value="<%= gameRent.user.lastname %>" disabled>
+            <span id="errors-text"></span>
+            
+            <label for="email">Email</label>
+            <input type="text" name="email" id="email" value="<%= gameRent.user.email %>" disabled>
+            <span id="errors-text"></span>
+
+            <label for="telefon">Telefon</label>
+            <input type="text" name="telefon" id="telefon" value="<%= gameRent.user.phonenumber%>" disabled>
+            <span id="errors-text"></span>
+            
+        </form>
+
+        <h2>Szczegoły gry</h2>
+        <form class="form">
+            <label for="name">Tytuł</label>
+            <input type="text" disabled value="<%= gameRent.user.games[0].games.name %>">
+            <span id="errors-text"></span>
+
+            <label for="description">Opis</label>
+            <textarea name="description" id="description" cols="30" rows="10" disabled><%= gameRent.user.games[0].games.description %></textarea>
+            <span id="errors-text"></span>
+
+            <label for="release_date">Data wydania</label>
+            <input type="text" disabled value="<%= gameRent.user.games[0].games.release_date.toISOString().split('T')[0] %>">
+            <span id="errors-text"></span>
+
+            <label for="length">Długosc</label>
+            <input type="text" disabled value="<%= gameRent.user.games[0].games.length %>">
+            <span id="errors-text"></span>
+        </form>
+
+        <h2>Szczegoły wypozyczenia</h2>
+        <form class="form">
+            <label for="do_kiedy">Do kiedy wypozyczone</label>
+            <input type="text" name="do_kiedy" id="to_when" value="<%= gameRent.to_when.toISOString().split('T')[0] %>" disabled>
+            <span id="errors-text"></span>
+
+            <label for="ile">Ile</label>
+            <input type="text" name="ile" id="ile" value="<%= gameRent.game_count %>" disabled>
+            <span id="errors-text"></span>
+            
+            <div class="form-buttons">
+                <a href="/gameRent" class="form-button-cancel">Powrót</a>
+            </div>
+        </form>
+    </main>
+
+    
+    <%- include('../../fragments/footer.ejs') %>
+</body>

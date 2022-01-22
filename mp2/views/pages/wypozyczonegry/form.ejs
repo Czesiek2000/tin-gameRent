@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= pageTitle %></title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <script src="/js/validationCommon.js"></script>
+    <script src="/js/validationRent.js"></script>
+</head>
+<body>
+    <%- include('../../fragments/header.ejs') %>
+    <main>
+        <h2><%= pageTitle %></h2>
+        <form method="post" action="<%=formAction%>" class="form" novalidate onsubmit="return validateForm();">
+            <% if (formMode !== 'showDetails') { %>
+                <input type="hidden" name="id" value="<%= gameRent.id %>">
+            <% } %>
+            <label for="">Uzytkownik</label>
+            <select name="user_id" id="userId" requied <% (formMode == 'showDetails') ? 'disabled' : '' %>>
+                <option value="" selected>Wybierz uzytkownika</option>
+                <% if (formMode == 'showDetails') { %>
+                    <% for(let i = 0; i < allUsers.length; i++ ) { let user = allUsers[i]; %>
+                        <option value="<%= user.id %>" label="<%= user.firstname + ' ' + user.lastname %>" <%= (gameRent.id && user.id.toString() == gameRent.user.id.toString()) ? 'selected' : '' %>></option>
+                    <% } %>
+                <% } else { %>
+                    <% for(let i = 0; i < allUsers.length; i++ ) { let user = allUsers[i]; %>
+                        <option value="<%= user.id %>" label="<%= user.firstname + ' ' + user.lastname %>"></option>
+                    <% } %>
+                <% } %>
+            </select>
+            <span id="errorUserId" class="errors-text"></span>
+
+            <label for="">Gra</label>
+            <select name="game_id" id="gameId" requied <% (formMode == 'showDetails') ? 'disabled' : '' %>>
+                <option value="" selected>Wybierz gre</option>
+                <% if (formMode == 'showDetails') { %>
+                    <% for(let i = 0; i < allGames.length; i++ ) { let game = allGames[i]; %>
+                        <option value="<%= game.id %>" label="<%= game.name%>" <%= (gameRent.id && game.id.toString() == gameRent.game.id.toString()) ? 'selected' : '' %>></option>
+                    <% } %>
+                <% } else { %>
+                    <% for(let i = 0; i < allGames.length; i++ ) { let game = allGames[i]; %>
+                        <option value="<%= game.id %>" label="<%= game.name%>"></option>
+                    <% } %>
+                <% } %>
+            </select>
+            <span id="errorGameId" class="errors-text"></span>
+
+            <label for="game_count">Ile gier</label>
+            <input type="number" name="game_count" id="game_count" placeholder="Liczba wypozyczonych gier">
+            <span id="gameCountError" class="errors-text"></span>
+
+            <label for="">Do kiedy</label>
+            <input type="date" name="to_when" id="to_when">
+            <span id="errorDate" class="errors-text"></span>
+            
+            <% if (formMode == 'showDetails') { %>
+                <div class="section-buttons">
+                    <a href="/gameRent/edit/<%= gameRent.id %>" class="button-edit">Edytuj</a>
+                </div>
+            <% } %>
+            <div class="form-buttons">
+                <input type="submit" value="<%= btnLabel %>" class="form-button-submit">
+                <a href="/users" class="form-button-cancel">Anuluj</a>
+            </div>
+        </form>
+        <p id="errorsSummary"></p>
+    </main>
+
+    <%- include('../../fragments/footer.ejs') %>
+</body>
+</html>

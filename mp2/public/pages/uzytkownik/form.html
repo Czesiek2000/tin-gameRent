@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MP2</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <script src="../../js/validationCommon.js"></script>
+    <script src="../../js/validationUser.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Wypozyczalnia gier</h1>
+        <img src="../../images/logo.jpeg" alt="logo">
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="../../index.html">Strona główna</a></li>
+            <li><a href="#" class="active">Uzytkownicy</a></li>
+            <li><a href="../gra/list.html">Gra</a></li>
+            <li><a href="../wypozyczonegry/list.html">Wypozyczone gry</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <h2>Dodaj uzytkownika</h2>
+        <form class="form" novalidate onsubmit="return validateForm();">
+            <label for="imie">Imie <span class="symbol-required">*</span></label>
+            <input id="imie" type="text" placeholder="2-60 znaków" required>
+            <span id="errorName" class="errors-text"></span>
+            <label for="nazwisko">Nazwisko <span class="symbol-required">*</span></label>
+            <input id="nazwisko" type="text" placeholder="2-60 znaków" required>
+            <span id="errorSurname" class="errors-text"></span>
+            <label for="email">E-mail <span class="symbol-required">*</span></label>
+            <input id="email" type="text" placeholder="2-60 znaków" required>
+            <span id="errorMail" class="errors-text"></span>
+            <label for="nr_telefonu">Numer telefonu</label>
+            <input id="nr_telefonu" type="text">
+            <span id="errorPhone" class="errors-text"></span>
+            <label for="date">Date</label>
+            <input id="date" type="date" required>
+            <span id="errorDate" class="errors-text"></span>
+            <div class="form-buttons">
+                <input type="submit" value="Dodaj uzytkownika" class="form-button-submit">
+                <a href="./list.html" class="form-button-cancel">Anuluj</a>
+            </div>
+        </form>
+        <p id="errorsSummary"></p>
+    </main>
+    <footer>Michał Czech s20613</footer>
+</body>
+</html>

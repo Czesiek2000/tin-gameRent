@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MP1</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <script src="/js/validationCommon.js"></script>
+    <script src="/js/validationGame.js"></script>
+</head>
+<body>
+    <%- include('../../fragments/header.ejs') %>
+
+    <main>
+        <h2><%= pageTitle %></h2>
+        <form class="form" method="post" action="<%=formAction %>" novalidate onsubmit="return validateForm();">
+            <input type="hidden" name="id" value="<%= game.id %>" />
+            <label for="name">Nazwa <span class="symbol-required">*</span></label>
+            <input name="name" type="text" id="name" placeholder="2-60 znaków" required value="<%= game.name %>" <%= (formMode == 'showDetails') ? 'hidden' : '' %> />
+            <span id="errorName" class="errors-text">
+                <% if(validationErrors.find(e => e.path.includes('name'))) { %>
+                    <%= validationErrors.find(e => e.path.includes('name')).message %>
+                <% } %>
+            </span>
+            <label for="release_date">Data premiery <span class="symbol-required">*</span></label>
+            <input name="release_date" type="date" id="releaseDate" placeholder="Bledna data" required value="<%= game.release_date %>" <%= (formMode == 'showDetails') ? 'hidden' : '' %> />
+            <span id="errorReleaseDate" class="errors-text">
+                <% if(validationErrors.find(e => e.path.includes('release_date'))) { %>
+                    <%= validationErrors.find(e => e.path.includes('release_date')).message %>
+                <% } %>
+            </span>
+            <label for="description" for="opis">Opis <span class="symbol-required">*</span></label>
+            <textarea name="description" id="opis" placeholder="2-200 znaków" cols="30" rows="10" required <%= (formMode == 'showDetails') ? 'hidden' : '' %>><%= game.description %></textarea>
+            <span id="errorDescription" class="errors-text">
+                <% if(validationErrors.find(e => e.path.includes('description'))) { %>
+                    <%= validationErrors.find(e => e.path.includes('description')).message %>
+                <% } %>
+            </span>
+            <label for="length">Długość</label>
+            <input name="length" type="number" id="length" placeholder="Dlugosc gry w godzinach" value="<%= game.length %>" <%= (formMode == 'showDetails') ? 'hidden' : '' %> />
+            <span id="errorLength" class="errors-text">
+                <% if(validationErrors.find(e => e.path.includes('length'))) { %>
+                    <%= validationErrors.find(e => e.path.includes('length')).message %>
+                <% } %>
+            </span>
+            <% if (formMode == 'showDetails') { %>
+                <div class="section-buttons">
+                    <a href="/games/edit/<%= game.id %>" class="button-edit">Edytuj</a>
+                </div>
+            <% } %>
+            <div class="form-buttons">
+                <input type="submit" value="<%= btnLabel %>" class="form-button-submit">
+                <a href="/games" class="form-button-cancel">Anuluj</a>
+            </div>
+        </form>
+        <p id="errorsSummary"></p>
+    </main>
+
+    <%- include('../../fragments/footer.ejs') %>
+</body>
+</html>
