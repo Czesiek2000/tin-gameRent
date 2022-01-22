@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MP1</title>
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+    <header>
+        <h1>Wypozyczalnia gier</h1>
+        <img src="../../images/logo.jpeg" alt="logo">
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="../../index.html">Strona główna</a></li>
+            <li><a href="../uzytkownik/list.html">Uzytkownicy</a></li>
+            <li><a href="#" class="active">Gra</a></li>
+            <li><a href="../wypozyczonegry/list.html">Wypozyczone gry</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <h2>Dodaj gre</h2>
+        <form class="form" novalidate onsubmit="return validateForm();">
+            <label for="nazwa">Nazwa <span class="symbol-required">*</span></label>
+            <input type="text" id="firstName" placeholder="2-60 znaków" required>
+            <span id="errorName" class="errors-text"></span>
+            <label for="dataPremiery">Data premiery <span class="symbol-required">*</span></label>
+            <input type="date" id="releaseDate" placeholder="2-60 znaków" required>
+            <span id="errorReleaseDate" class="errors-text"></span>
+            <label for="opis">Opis <span class="symbol-required">*</span></label>
+            <input type="text" id="opis" placeholder="2-60 znaków" required>
+            <span id="errorDescription" class="errors-text"></span>
+            <label for="dlugosc">Długość</label>
+            <input type="text" id="length" placeholder="60-120 znaków">
+            <span id="errorLength" class="errors-text"></span>
+            <div class="form-buttons">
+                <input type="submit" value="Dodaj gre" class="form-button-submit">
+                <a href="./list.html" class="form-button-cancel">Anuluj</a>
+            </div>
+        </form>
+    </main>
+
+    <footer>Michał Czech s20613</footer>
+</body>
+</html>
