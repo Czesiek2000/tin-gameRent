@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="/js/validationCommon.js"></script>
+    <title>MP3</title>
+</head>
+<body>
+    <% if(!loggedUser) { %>
+        <div id="login">
+            <div class="login">
+                <h3><%= __('register.log') %></h3>
+                <div>
+                    <span id="loginErrorrs"><%= loginError ? loginError : '' %></span>
+                    <button class="button-add" onclick="showLogin()"><%= __('register.login') %></button>
+                </div>
+            </div>
+            <form action="/login" method="post" novalidate class="loginForm" onsubmit="return hideLogin()">
+                <label for="loginEmail"><%= __('register.email') %>:</label>
+                <input type="email" id="loginEmail" name="email">
+
+                <label for="loginPassword"><%= __('register.password') %>:</label>
+                <input type="password" id="loginPassword" name="password">
+
+                <input type="submit" value="<%= __('register.loginBtn') %>" class="button-add">
+            </form>
+        </div>
+    <% } else { %>
+        <div class="logged">
+            <p><%= __('register.loggedAs') %>: <b><%= loggedUser.firstname + ' ' + loggedUser.lastname %></b></p>
+            <div>
+                <a href="/logout" class="list-action-button-delete"><%= __('register.logout') %></a>
+                <a href="/changeLang/pl" class="<%= lang == 'pl' ? 'active' : '' %>">PL</a>
+                <a href="/changeLang/en" class="<%= lang == 'en' ? 'active' : '' %>">EN</a>
+            </div>
+        </div>
+    <% } %>
+
+    <header>
+        <h1><%= __('title.content') %></h1>
+        <img src="/images/logo.jpeg" alt="logo">
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="/" class="<%= navLocation == 'main' ? 'active' : '' %>"><%= __('nav.home') %></a></li>
+            <li><a href="/users" class="<%= navLocation == 'users' ? 'active' : '' %>"><%= __('nav.users') %></a></li>
+            <li><a href="/games" class="<%= navLocation == 'game' ? 'active' : '' %>"><%= __('nav.games') %></a></li>
+            <li><a href="/gameRent" class="<%= navLocation == 'gameRent' ? 'active' : '' %>"><%= __('nav.rents') %></a></li>
+            <!-- <li><a href="/changeLang/pl" class="<%= lang == 'pl' ? 'active' : '' %>">PL</a></li>
+            <li><a href="/changeLang/en" class="<%= lang == 'en' ? 'active' : '' %>">EN</a></li> -->
+        </ul>
+        
+    </nav>
+    <script>
+        function showLogin() {
+            document.querySelector('.loginForm').style.display = 'flex';
+        }
+
+        function hideLogin() {
+            let loginEmail = document.getElementById('loginEmail');
+            let loginPassword = document.getElementById('loginPassword');
+            let valid = true;
+
+            loginEmail.style.border = '';
+            loginPassword.style.border = '';
+
+            if(!checkRequired(loginEmail.value)){
+                valid = false;
+                loginEmail.style.border = '1px solid red';
+            }
+
+            if(!checkRequired(loginPassword.value)){
+                valid = false;
+                loginPassword.style.border = '1px solid red';
+            }
+
+            if(valid) {
+                document.querySelector('.loginForm').style.display = 'none';
+                return valid;
+            }else {
+                return false;
+            }
+        }
+
+        function checkParams () {
+            const urlSearchParams = new URLSearchParams(window.location.search);
+            const params = Object.fromEntries(urlSearchParams.entries());
+            if(params.hasOwnProperty('message')) {
+                setTimeout(() => {
+                    showLogin();
+                }, 1000);
+            }
+        }
+
+        checkParams();
+    </script>
+</body>
+</html>

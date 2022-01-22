@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MP3</title>
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+    <%- include('../../fragments/header.ejs') %>
+    <main>
+        <h2><%= pageTitle %></h2>
+        <form class="form">
+            <label for="nazwa"><%= __('game.fields.name.label') %> <span class="symbol-required">*</span></label>
+            <input type="text" value="<%= game.name %>" disabled />
+            <span id="errorName" class="errors-text"></span>
+            <label for="dataPremiery"><%= __('game.fields.releaseDate.label')%> <span class="symbol-required">*</span></label>
+            <input type="date" value="<%= game.release_date %>" disabled>
+            <span id="errorReleaseDate" class="errors-text"></span>
+            <label for="opis"><%= __('game.fields.description.label')%> <span class="symbol-required">*</span></label>
+            <textarea type="text" disabled cols="30" rows="10"><%= game.description %></textarea>
+            <span id="errorDescription" class="errors-text"></span>
+            <label for="dlugosc"><%= __('game.fields.length.label')%></label>
+            <input type="text" value="<%= game.length %>" disabled>
+            <span id="errorLength" class="errors-text"></span>
+            <div class="form-buttons">
+                <p id="errorsSummary" class="errors-text"></p>
+                <% if(formMode != 'showDetails') { %>
+                    <input type="submit" class="form-button-submit" value="<%= btnLabel %>">
+                    <a href="/games" class="form-button-cancel"><%= __('form.actions.cancel')%></a>
+                <% } else { %>
+                    <a href="/games" class="form-button-cancel"><%= __('form.actions.return')%></a>
+                <% } %>
+            </div>
+        </form>
+
+        <h2><%= __('game.form.details.userList') %></h2>
+        <% if(game.users.length !== 0) { %>
+            <table class="table-list">
+                <thead>
+                    <th><%= __('user.fields.firstname.label') %></th>
+                    <th><%= __('user.fields.lastname.label') %></th>
+                    <th><%= __('user.fields.email.label') %></th>
+                    <th><%= __('user.fields.phonenumber.label') %></th>
+                </thead>
+                <tbody>
+                    <% for (let user of game.users) { %>
+                        <tr>
+                            <td><a href="/users/details/<%= user.user_id %>"><%= user.user.firstname %></a></td>
+                            <td><%= user.user.lastname %></td>
+                            <td><%= user.user.email %></td>
+                            <td><%= user.user.phonenumber %></td>
+                        </tr>
+                    <% } %>
+                </tbody>
+            </table>
+        <% } else { %>
+            <p>Brak użytkowników</p>
+        <% } %>
+    </main>
+    <%- include('../../fragments/footer.ejs') %>
+</body>
+</html>

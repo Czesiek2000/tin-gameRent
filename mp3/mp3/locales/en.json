@@ -1,0 +1,152 @@
+{
+	"main-page": {
+		"content": "Main page"
+	},
+	"nav": {
+		"home": "Homepage",
+		"users": "Users",
+		"games": "Games",
+		"rents": "Game rents"
+	},
+	"list": {
+		"actions": {
+			"title": "Actions",
+			"details": "Details",
+			"edit": "Edit",
+			"delete": "Delete"
+		}
+	},
+	"form": {
+		"actions": {
+			"return": "Return",
+			"edit": "Edit",
+			"cancel": "Cancel"
+		}
+	},
+	"user": {
+		"fields": {
+			"firstname": {
+				"label": "First name",
+				"placeholder": "2-60 characters"
+			},
+			"lastname": {
+				"label": "Last name",
+				"placeholder": "2-60 characters"
+			},
+			"email": {
+				"label": "Email",
+				"placeholder": "example@example.com"
+			},
+			"phonenumber": {
+				"label": "Phonenumber",
+				"placeholder": "9 characters number"
+			},
+			"password": {
+				"label": "Password",
+				"placeholder": "6-60 characters password"
+			}
+		},
+		"list": {
+			"title": "Users",
+			"addNew": "Add new user",
+			"noData": "No users in database",
+			"pageTitle": "List of users"
+		},
+		"form": {
+			"rentDetails": "Rent details",
+			"add": {
+				"pageTitle": "Add new user",
+				"btnLabel": "Add user",
+				"confirm": {
+					"header": "Confirmation",
+					"text": "The user has been added successfully"
+				}
+			},
+			"edit": {
+				"pageTitle": "Edit user",
+				"btnLabel": "Save changes",
+				"confirm": {
+					"header": "Confirmation",
+					"text": "The user has been successfully updated"
+				}
+			},
+			"details": {
+				"pageTitle": "User details"
+			}
+		},
+		"notification": {
+			"add": {
+				"text": "Add user",
+				"confirm": "Want to add user?"
+			},
+			"send": "What to send form?",
+			"delete": {
+				"confirm": "Want to delete user?",
+				"text": "User was deleted successfully"
+			}
+		}
+	},
+	"title": {
+		"content": "Game rental"
+	},
+	"validationMessage": {
+		"fieldRequired": "Field is required",
+		"emailRequired": "Email is required",
+		"specificError": "Fields need to contain 2-60 characters",
+		"passwordRequired": "Password required",
+		"errorsSummary": "Form contains errors"
+	},
+	"game": {
+		"fields": {
+			"name": {
+				"label": "Name",
+				"placeholder": "2-60 characters"
+			},
+			"description": {
+				"label": "Description",
+				"placeholder": "2-200 characters"
+			},
+			"length": {
+				"label": "Length",
+				"placeholder": "Game length in hours"
+			},
+			"releaseDate": {
+				"label": "Release date",
+				"placeholder": "02-03-2021"
+			}
+		},
+		"list": {
+			"title": "Games list",
+			"addNew": "Add game"
+		},
+		"form": {
+			"add": {
+				"pageTitle": "Add game",
+				"btnLabel": "Add game",
+				"confirm": {
+					"header": "Operation confirmation",
+					"text": "Game was added successfully"
+				}
+			},
+			"details": {
+				"pageTitle": "Game details",
+				"userList": "User list"
+			}
+		},
+		"notification": {
+			"delete": {
+				"confirm": "game.notification.delete.confirm",
+				"text": "game.notification.delete.text"
+			}
+		}
+	},
+	"register": {
+		"loggedAs": "You are logged as",
+		"logout": "Logout",
+		"log": "Login",
+		"login": "Login",
+		"email": "Email",
+		"password": "Password",
+		"loginBtn": "Login"
+	}
+}

@@ -1,0 +1,175 @@
+{
+    "main-page": {
+        "title": "Wypożyczalnia gier",
+        "header": "Wypożyczalnia gier",
+        "content": ""
+    },
+    "navLinks": {
+        "home": "Strona główna",
+        "users": "Użytkownicy",
+        "games": "Gry",
+        "rentals": "Wypożyczenia",
+        "history": "Historia"
+    },
+    "list": {
+        "actions": {
+            "title": "Akcje",
+            "details": "Szczegóły",
+            "edit": "Edytuj",
+            "delete": "Usuń"
+        }
+    },
+    "form": {
+        "actions": {
+            "return": "Powrót",
+            "add": "Dodaj",
+            "edit": "Edytuj",
+            "cancel": "Anuluj",
+            "login": "Zaloguj sie",
+            "logout": "Wyloguj sie"
+        },
+        "hasErrors": "Formularz zawiera błędy"
+    },
+    "user": {
+        "header": "Lista użytkowników",
+        "add": "Dodaj użytkownika",
+        "loading": "Trwa ładowanie użytkowników...",
+        "new": "Nowy użytkownik",
+        "edit": "Edytuj użytkownika",
+        "details": "Szczegóły użytkownika",
+        "noUser": "Nie znaleziono użytkownika",
+        "noUsers": "Nie znaleziono użytkowników",
+        "noGamesUser": "Ten użytkownik nie posiada żadnych wypoczonych gier",
+        "normal": "Normalny użytkownik",
+        "nophone": "Nie podano numeru telefonu",
+        "delete": {
+            "success": "Uzytkownik pomyslnie usuniety",
+            "error": "Blad podczas usuwania uzytkownika"
+        },
+        "added": {
+            "success": "Uzytkownik pomyslnie dodany",
+            "error": "Blad podczas dodawania uzytkownika"
+        },
+        "edited": {
+            "success": "Uzytkownik pomyslnie edytowany",
+            "error": "Blad przy edycji uzytkownika"
+        },
+        "placeholders": {
+            "form": {
+                "2-60": "2-60 znakow",
+                "9digits": "9 cyfrowa liczba",
+                "6-60": "6-60 znakow",
+                "number": "Liczba",
+                "0or1": "0 lub 1"
+            }
+        },
+        "table": {
+            "name": "Imię",
+            "surname": "Nazwisko",
+            "email": "Email",
+            "phone": "Telefon",
+            "password": "Hasło",
+            "role": "Rola"
+        }        
+    },
+    "game": {
+        "header": "Lista gier",
+        "add": "Dodaj grę",
+        "loading": "Trwa ładowanie gier...",
+        "new": "Nowa gra",
+        "edit": "Edytuj grę",
+        "details": "Szczegóły gry",
+        "noGame": "Nie znaleziono gry",
+        "noUserGame": "Nikt nie wypożyczył tej gry",
+        "delete": {
+            "success": "Gra pomyslnie usunieta",
+            "error": "Blad podczas usuwania gry"
+        },
+        "added": {
+            "success": "Pomyslnie dodano nowa gre",
+            "error": "Blad podczas dodawania gry"
+        },
+        "edited": {
+            "success": "Gra pomyslnie edytowana",
+            "error": "Blad podczas dodawania gry"
+        },
+        "placeholders": {
+            "form": {
+                "2-60": "2-60 znakow",
+                "9digits": "Liczba 9 cyfrowa",
+                "3-300": "3-300 znakow",
+                "number": "Liczba"
+                
+            }
+        },
+        "table": {
+            "name": "Tytuł",
+            "description": "Opis",
+            "length": "Długość",
+            "releaseDate": "Data wydania"
+        }
+    },
+    "rentals": {
+        "header": "Lista wypożyczeń",
+        "add": "Dodaj wypożyczenie",
+        "loading": "Trwa ładowanie wypożyczeń...",
+        "new": "Nowe wypożyczenie",
+        "edit": "Edytuj wypożyczenie",
+        "details": "Szczegóły wypożyczenia",
+        "noRental": "Nie znaleziono wypożyczeń",
+        "delete": {
+            "success": "Pomyślnie usunięto wypożyczenie",
+            "error": "Wystąpił błąd podczas usuwania wypożyczenia"
+        },
+        "added": {
+            "success": "Pomyślnie dodano nowe wypożyczenie",
+            "error": "Wystąpił błąd podczas dodawania wypożyczenia"
+        },
+        "edited": {
+            "success": "Pomyślnie edytowano wypożyczenie",
+            "error": "Wystąpił błąd podczas edycji wypożyczenia"
+        },
+        "placeholders": {
+            "form": {
+                "chooseUser": "Wybierz użytkownika",
+                "chooseGame": "Wybierz gre",
+                "toWhenDate": "Do kiedy",
+                "gameCount": "Ile"
+            }
+        },
+        "table": {
+            "username": "Imie i Nazwisko",
+            "phone": "Telefon",
+            "gameTitle": "Tytuł gry",
+            "gameCount": "Ile",
+            "toWhen": "Do kiedy"
+        }
+    },
+    "validation": {
+        "required": "To pole jest wymagane",
+        "fieldLength": "To pole musi miec od {{min}} do {{max}} znakow",
+        "email": "To pole musi być poprawnym adresem email",
+        "number": "To pole musi być liczbą",
+        "9_number": "To pole powinno zawierac 9 cyfrowa liczbe",
+        "errors": "Formularz zawiera błędy",
+        "emailUsed": "Email jest już używany",
+        "nameExists": "Taka gra juz istnieje"
+    },
+    "error": "Wystąpił błąd",
+    "auth": {
+        "pageTitle": "Zaloguj sie",
+        "loginAs": "Zalogowany jako",
+        "blocked": "Dostep zablokowany",
+        "createAccount": "Nie masz konta? Zarejestruj się"
+    },
+    "history": {
+        "header": "Historia wypozyczen",
+        "game": "Gra",
+        "user": "Użytkownik",
+        "email": "Email",
+        "operation": "Operacja",
+        "table": "Tabela",
+        "noRecords": "Brak rekordów"
+    }
+
+}

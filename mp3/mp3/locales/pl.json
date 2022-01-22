@@ -1,0 +1,174 @@
+{
+	"title": {
+		"content": "Wypożyczalnia gier"
+	},
+	"main-page": {
+		"content": "Strona główna"
+	},
+	"nav": {
+		"home": "Strona główna",
+		"users": "Użytkownik",
+		"games": "Gry",
+		"rents": "Wypożyczone gry"
+	},
+	"list": {
+		"actions": {
+			"title": "Akcje",
+			"details": "Szczegóły",
+			"edit": "Edytuj",
+			"delete": "Usuń"
+		}
+	},
+	"form": {
+		"actions": {
+			"return": "Powrót",
+			"edit": "Edytuj",
+			"cancel": "Anuluj",
+			"login": "Zaloguj sie",
+			"logout": "Wyloguj sie"
+		}
+	},
+	"user": {
+		"fields": {
+			"firstname": {
+				"label": "Imię",
+				"placeholder": "2-60 znaków"
+			},
+			"lastname": {
+				"label": "Nazwisko",
+				"placeholder": "2-60 znaków"
+			},
+			"email": {
+				"label": "Email",
+				"placeholder": "2-60 znaków"
+			},
+			"phonenumber": {
+				"label": "Numer telefonu",
+				"placeholder": "9 cyfrowa liczba"
+			},
+			"password": {
+				"label": "Hasło",
+				"placeholder": "2-60 znaków"
+			}
+		},
+		"list": {
+			"title": "Lista użytkowników",
+			"addNew": "Dodaj nowego użytkownika",
+			"noData": "Brak danych",
+			"pageTitle": "Lista użytkowników"
+		},
+		"form": {
+			"rentDetails": "Szczegóły wypożyczenia",
+			"add": {
+				"pageTitle": "Dodanie użytkownika",
+				"btnLabel": "Dodaj użytkownika",
+				"confirm": {
+					"header": "Potwierdzenie operacji",
+					"text": "Pomyslnie dodano pracownika"
+				}
+			},
+			"edit": {
+				"pageTitle": "Edycja użytkownika",
+				"btnLabel": "Zapisz zmiany",
+				"confirm": {
+					"header": "Potwierdzenie operacji",
+					"text": "Pomyslnie zapisano zmiany"
+				}
+			},
+			"details": {
+				"pageTitle": "Szczegóły użytkownika",
+				"gameDetails": "Szczegóły gier"
+			}
+		},
+		"notification": {
+			"send": "Czy chcesz wysłac formularz?",
+			"delete": {
+				"confirm": "Chcesz usunąć użytkownika?",
+				"text": "Uzytkownik został usuniety"
+			},
+			"add": {
+				"text": "Użytkownik został dodany"
+			},
+			"edit": {
+				"text": "Użytkownik został edytowany"
+			}
+		}
+	},
+	"game": {
+		"fields": {
+			"name": {
+				"label": "Nazwa",
+				"placeholder": "2-60 znaków"
+			},
+			"releaseDate": {
+				"label": "Data premiery",
+				"placeholder": "02-03-2021"
+			},
+			"description": {
+				"label": "Opis",
+				"placeholder": "2-200 znaków"
+			},
+			"length": {
+				"label": "Długosc",
+				"placeholder": "Długosc gry w godzinach"
+			}
+		},
+		"list": {
+			"title": "Lista gier",
+			"addNew": "Dodaj nową grę",
+			"noData": "Brak danych",
+			"pageTitle": "Lista gier"
+		},
+		"form": {
+			"add": {
+				"pageTitle": "Dodanie gry",
+				"btnLabel": "Dodaj grę",
+				"confirm": {
+					"header": "Potwierdzenie operacji",
+					"text": "Pomyslnie dodano grę"
+				}
+			},
+			"edit": {
+				"pageTitle": "Edycja gry",
+				"btnLabel": "Zapisz zmiany",
+				"confirm": {
+					"header": "Potwierdzenie operacji",
+					"text": "Pomyslnie zapisano zmiany"
+				}
+			},
+			"details": {
+				"pageTitle": "Szczegóły gry",
+				"userList": "Lista użytkowników"
+			}
+		},
+		"notification": {
+			"send": "Czy chcesz wysłac formularz?",
+			"delete": {
+				"confirm": "Czy chcesz kontynuować",
+				"text": "Pomyslnie usunieto"
+			}
+		}
+	},
+	"validationMessage": {
+		"fieldRequired": "Pole jest wymagane",
+		"emailRequired": "Pole powinno zawierac poprawny email",
+		"errorsSummary": "Formularz zawiera błedy",
+		"specificError": "Pole powinno zawierac od 2 do 60 znaków",
+		"passwordRequired": "Hasło jest wymagane"
+	},
+	"register": {
+		"loggedAs": "Jesteś zalogowany jako",
+		"logout": "Wyloguj",
+		"login": "Logowanie",
+		"loginBtn": "Zaloguj się",
+		"log": "Logowanie",
+		"email": "Email",
+		"password": "Password"
+	},
+	"button": {
+		"login": "Zaloguj sie"
+	},
+	"auth": {
+		"pageTitle": "Zalogu się"
+	}
+}

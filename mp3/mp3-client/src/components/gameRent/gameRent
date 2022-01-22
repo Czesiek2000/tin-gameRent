@@ -1,0 +1,218 @@
+import React from 'react';
+
+import { Link, Redirect } from 'react-router-dom';
+import { getGameRentDetailsApiCalls } from '../../api/gameRentApiCalls';
+import { getUserDetailsApiCalls, getUsersApiCalls } from '../../api/userApiCalls';
+import { getGamesApiCalls } from '../../api/gamesApiCalls';
+import formMode from '../../helpers/formHelper';
+import * as validationCommon from '../../helpers/validationCommon';
+import FormButton from '../form/FormButtons';
+import FormInput from '../form/FormInput';
+
+class GameRentForm extends React.Component {
+    constructor(props) {
+        super(props);
+        const paramsRentId = props.match.params.id;
+        const currentFormMode = paramsRentId ? formMode.EDIT : formMode.NEW;
+       
+        this.state = {
+            id: paramsRentId,
+            users: [],
+            games: [],
+            rent: {
+                user_id: '',
+                game_id: '',
+                to_when: '',
+                game_count: ''
+            },
+            errors: {
+                user_id: '',
+                game_id: '',
+                to_when: '',
+                game_count: '',
+            },
+            formMode: currentFormMode,
+            redirect: false,
+            error: null,
+        }
+    }
+
+    fetchRentDetails = () => {
+        getGameRentDetailsApiCalls(this.state.id)
+        .then(res => res.json())
+        .then(data => {
+            if(data.message) {
+                this.setState({
+                    message: data.message,
+                });
+            } else {
+                this.setState({
+                    rent: data,
+                    message: null,
+                });
+            }
+            this.setState({
+                loading: true,
+            })
+        })
+        .catch(error => {
+            this.setState({
+                error: error.message,
+                loading: true,
+            });
+        });
+
+        getUsersApiCalls()
+        .then(res => res.json())
+        .then(data => {
+            // console.log(data);
+            this.setState({
+                users: data,
+                loading: true,
+            });
+        })
+
+        getGamesApiCalls()
+        .then(res => res.json())
+        .then(data => {
+            this.setState({
+                games: data,
+                loading: true,
+            });
+        })
+    }
+
+    componentDidMount() {
+        this.fetchRentDetails();
+    }
+
+    handleChange = (event) => {
+        const { name, value } = event.target;
+        const rent = { ...this.state.rent };
+        console.log(rent);
+        rent[name] = value;
+        
+        const errorMessage = this.validateField(name, value);
+        const errors = {...this.state.errors};
+        errors[name] = errorMessage;
+        console.log(name, value);
+
+        this.setState({
+            rent,
+            errors,
+        });
+    }
+
+    validateField = (fieldName, value) => {
+        // const { t } = this.props
+        let errorMessage = '';
+        console.log(fieldName, value);
+        if(fieldName === 'user_id') {
+            if(!validationCommon.checkRequired(value)) {
+                errorMessage = 'User id is required';
+            }
+        }
+
+        if(fieldName === 'game_id') {
+            if(!validationCommon.checkRequired(value)) {
+                errorMessage = 'Game id is required';
+            }
+        }
+
+        if(fieldName === 'to_when') {
+            if(!validationCommon.checkRequired(value)) {
+                errorMessage = 'To when is required';
+            }
+        }
+
+        if(fieldName === 'game_count') {
+            if(!validationCommon.checkRequired(value)) {
+                errorMessage = 'Game count is required';
+            }
+        }
+
+        return errorMessage;
+    }
+
+    validateForm = () => {
+        const rent = this.state.rent;
+        const errors = this.state.errors;
+        for(const fieldName in rent) {
+            const fieldValue = rent[fieldName];
+            const errorMessage = this.validateField(fieldName, fieldValue);
+            console.log(fieldName, fieldValue, errorMessage);
+            errors[fieldName] = errorMessage;
+        }
+        this.setState({
+            errors,
+        });
+        return !this.hasErrors();
+    }
+
+    hasErrors = () => {
+        const errors = this.state.errors;
+        console.log(errors);
+        for(const fieldName in errors) {
+            if(errors[fieldName].length > 0) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    handleSubmit = (event) => {
+        event.preventDefault();
+        const isValid = this.validateForm();
+        console.log(isValid);
+    }
+
+    handleSelectChange = (event) => {
+        const { name, value } = event.target;
+        const rent = { ...this.state.rent };
+        rent[name] = value;
+        
+        const errorMessage = this.validateField(name, value);
+        const errors = {...this.state.errors};
+        errors[name] = errorMessage;
+
+        this.setState({
+            rent,
+            errors,
+        });
+    }
+
+    render() {
+        const globalErrorMessage = '';
+        return (
+            <div>
+                <form className='form' onSubmit={this.handleSubmit}>
+                    <label htmlFor='user_id'>Wybierz uzytkownika:</label>
+                    <select name='user_id' onChange={this.handleSelectChange}>
+                        <option value="">Wybierz użytkownika</option>
+                        { 
+                            this.state.users.map(user => (
+                                <option key={user.id} value={user.id}>{user.firstname} {user.lastname}</option>
+                                ))
+                            }
+                    </select>
+                    <span id='error-user_id' className='errors-text'></span>
+                    <label htmlFor='game_id'>Wybierz gre:</label>
+                    <select name='game_id' onChange={this.handleSelectChange}>
+                        <option value="">Wybierz gre</option>
+                        { 
+                            this.state.games.map(game => (
+                                <option key={game.id} value={game.id}>{game.name}</option>
+                            ))
+                        }
+                    </select>
+                    <span id="error-game_id" className='errors-text'></span>
+                    <FormInput type="date" label="Data wypożyczenia" name="to_when" value={this.state.rent.to_when || ''} onChange={this.handleChange} error={this.state.errors.to_when} required />
+                    <FormInput type="number" label="ile" name="game_count" value={this.state.rent.game_count } onChange={this.handleChange} error={this.state.errors.game_count} required placeholder="Ile gier wypozyczonych"/>
+                    <FormButton mode={this.state.formMode} error={globalErrorMessage} cancelPath="/gameRents" />
+                </form>
+            </div>
+        )
+    }
+}
+
+export default GameRentForm

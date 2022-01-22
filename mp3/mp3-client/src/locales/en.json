@@ -1,0 +1,163 @@
+{
+    "main-page": {
+        "title": "Game rent",
+        "header": "Game rent",
+        "content": ""
+    },
+    "navLinks": {
+        "home": "Home",
+        "users": "Users",
+        "games": "Games",
+        "rentals": "Rents",
+        "history": "History"
+    },
+    "list": {
+        "actions": {
+            "title": "Actions",
+            "details": "Details",
+            "edit": "Edit",
+            "delete": "Delete"
+        }
+    },
+    "form": {
+        "actions": {
+            "return": "Return",
+            "add": "Add",
+            "edit": "Edit",
+            "cancel": "Cancel",
+            "login": "Login",
+            "logout": "Logout"
+        },
+        "hasErrors": "Form contains errors"
+    },
+    "user": {
+        "header": "Users list",
+        "add": "Add user",
+        "loading": "Loading users...",
+        "new": "New user",
+        "edit": "Edit user",
+        "details": "User details",
+        "noUser": "No user found",
+        "noUsers": "No users found",
+        "noGamesUser": "This user has not rent any games",
+        "normal": "Normal user",
+        "nophone": "No phone",
+        "delete": {
+            "success": "User deleted successfully",
+            "error": "Error when deleting user"
+        },
+        "added": {
+            "success": "User added successfully",
+            "error": "Error when adding user"
+        },
+        "edited": {
+            "success": "User edited successfully",
+            "error": "Error when editing user"
+        },
+        "placeholders": {
+            "form": {
+                "2-60": "2-60 characters",
+                "9digits": "9 digits number",
+                "6-60": "6-60 characters",
+                "0or1": "0 or 1"
+            }
+        },
+        "table": {
+            "name": "Name",
+            "surname": "Surname",
+            "email": "Email",
+            "phone": "Phone",
+            "password": "Password",
+            "role": "Role"
+        }
+    },
+    "game": {
+        "header": "Game list",
+        "add": "Add game",
+        "loading": "Loading games...",
+        "new": "New game",
+        "edit": "Edit game",
+        "details": "Game details",
+        "noGame": "No game found",
+        "noUserGame": "This game has not been rented",
+        "delete": {
+            "success": "Game deleted successfully",
+            "error": "Error when deleting game"
+        },
+        "added": {
+            "success": "Game added successfully",
+            "error": "Error when adding game"
+        },
+        "edited": {
+            "success": "Game edited successfully",
+            "error": "Error when editing game"
+        },
+        "placeholders": {
+            "form": {
+                "2-60": "2-60 characters",
+                "9digits": "9 digits number",
+                "3-300": "3-300 characters",
+                "number": "Number"
+                
+            }
+        },
+        "table": {
+            "name": "Name",
+            "description": "Description",
+            "length": "Length",
+            "releaseDate": "Release date"
+        }
+    },
+    "rentals": {
+        "header": "Rentals list",
+        "add": "Add rental",
+        "loading": "Loading rentals...",
+        "new": "New rental",
+        "edit": "Edit rental",
+        "details": "Rental details",
+        "noRental": "No rental found",
+        "placeholders": {
+            "form": {
+                "chooseUser": "Choose user",
+                "chooseGame": "Choose game",
+                "toWhenDate": "To when",
+                "gameCount": "How many games"
+            }
+        },
+        "table": {
+            "username": "Name & surname",
+            "phone": "Phone",
+            "gameTitle": "Game title",
+            "gameCount": "Game count",
+            "toWhen": "To when"
+        }
+    },
+    "validation": {
+        "required": "This field is required",
+        "fieldLength": "This field need to have from {{min}} to {{max}} characters",
+        "email": "This field must be a valid email",
+        "number": "This field must be a number",
+        "9_number": "This field must be a number with 9 characters",
+        "errors": "Form contains errors",
+        "emailUsed": "This email is already used",
+        "nameExists": "This game already exists"
+    },
+    "error": "Error occurred",
+    "auth": {
+        "pageTitle": "Login",
+        "loginAs": "Login as",
+        "blocked": "Access blocked",
+        "createAccount": "Don't have an account? Create one"
+    },
+    "history": {
+        "header": "History list",
+        "loading": "Loading history...",
+        "noHistory": "No history found",
+        "game": "Game",
+        "user": "User",
+        "email": "Email",
+        "operation": "Operation",
+        "table": "Table",
+        "noRecords": "No records"
+    }
+}

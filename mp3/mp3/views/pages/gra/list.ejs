@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MP1</title>
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+    <%- include('../../fragments/header.ejs') %>
+
+    <main>
+        <h2><%= __('game.list.title') %></h2>
+        <table class="table-list">
+            <thead>
+                <th><%= __('game.fields.name.label') %></th>
+                <th><%= __('game.fields.releaseDate.label') %></th>
+                <th><%= __('game.fields.description.label') %></th>
+                <th><%= __('game.fields.length.label') %></th>
+                <% if (loggedUser) { %>
+                    <th><%= __('list.actions.title') %></th>
+                <% } %>
+            </thead>
+            <tbody>
+                <% for (let game of games) { %>
+                    <tr>
+                        <td><%- game.name %></td>
+                        <td><%- game.release_date.toISOString().split('T')[0] %></td>
+                        <td><%- game.description %></td>
+                        <td><%- game.length %></td>
+                        <% if(loggedUser) { %>
+                            <td>
+                                <ul class="list-action">
+                                    <li><a href="/games/details/<%=game.id%>" class="list-action-button-details"><%= __('list.actions.details') %></a></li>
+                                    <li><a href="/games/edit/<%=game.id%>" class="list-action-button-edit"><%= __('list.actions.edit') %></a></li>
+                                    <li><a href="#" class="list-action-button-delete" onclick="deleteGame('<%=game.id%>', '<%= __(`game.notification.delete.confirm`) %>', '<%= __(`game.notification.delete.text`)%>')"><%= __('list.actions.delete') %></a></li>
+                                </ul>
+                            </td>
+                        <% } %>
+                    </tr>
+                <% } %>
+            </tbody>
+        </table>
+        <!-- <p>Brak rekordow</p> -->
+        <% if(loggedUser) { %>
+            <p><a href="/games/add" class="button-add"><%= __('game.list.addNew') %></a></p>
+        <% } %>
+    </main>
+    <% if (message != null) { %>
+        <div class="alert">
+            <%= message %>
+        </div>
+    <% } %>
+    <%- include('../../fragments/footer.ejs') %>
+    <script>
+        function deleteGame(game, confirmMessage, ) {
+            if (confirm(confirmMessage)) {
+                window.location.href = '/games/delete/' + game;
+            }
+            alert('Gra zostala usunieta');
+        }
+
+        let alert = document.querySelector('.alert')
+        if(alert !== null){
+            if(alert.style.display = 'block') {
+                setTimeout(() => {
+                    alert.style.display = 'none';
+                }, 1500);
+            }
+        }
+    </script>
+</body>
+</html>

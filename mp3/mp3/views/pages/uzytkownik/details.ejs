@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= pageTitle %></title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <script src="/js/validationCommon.js"></script>
+    <script src="/js/validationUser.js"></script>
+</head>
+<body>
+    <%- include('../../fragments/header.ejs') %>
+    
+    <main>
+        <h2><%= pageTitle %></h2>
+        <% if(user.id !== undefined) { %>
+        <form class="form" novalidate onsubmit="return validateForm(`<%= __('validationMessage.fieldRequired') %>`, `<%= __('validationMessage.emailRequired') %>`, `<%= __('validationMessage.specificError') %>`, `<%= __('validationMessage.passwordRequired') %>`, `<%= __('validationMessage.errorsSummary') %>`, `<%= ('user.notification.send')%>`)">
+            <label for="imie"><%= __('user.fields.firstname.label') %> <span class="symbol-required">*</span></label>
+            <input type="text" id="imie" value="<%= user.firstname %>" disabled />
+            <span id="error-input"></span>
+
+            <label for="naziwsko"><%= __('user.fields.lastname.label') %> <span class="symbol-required">*</span></label>
+            <input type="text" id="nazwisko" value="<%= user.lastname %>" disabled>
+            <span id="error-input"></span>
+            
+            <label for="email"><%= __('user.fields.email.label') %> <span class="symbol-required">*</span></label>
+            <input type="text" id="email" value="<%= user.email %>" disabled>
+            <span id="error-input"></span>
+            
+            <label for="nr_telefonu"><%= __('user.fields.phonenumber.label') %></label>
+            <input type="text" id="nr_telefonu" value="<%= user.phonenumber %>" disabled>
+            <span id="error-input"></span>
+            
+            <div class="form-buttons">
+                <p id="errorsSummary" class="errors-text"></p>
+                <% if(formMode != 'showDetails') { %>
+                    <input type="submit" class="form-button-submit" value="<%= btnLabel %>">
+                    <a href="/users" class="form-button-cancel"><%= __('form.actions.cancel') %></a>
+                <% } else { %>
+                    <a href="/users" class="form-button-cancel"><%= __('form.actions.return') %></a>
+                <% } %>
+            </div>
+        </form>
+        
+        <% if (formMode == 'showDetails' || formMode == 'edit') { %>
+            <h2><%= __('user.form.rentDetails') %></h2>
+            <% if (user.games.length != 0) {%>
+                <table class="table-list">
+                    <thead>
+                        <tr>
+                            <th>Tytul</th>
+                            <th>Opis</th>
+                            <th>Długość</th>
+                            <th>Data wydania</th>
+                            <th>Do kiedy</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% for (let u of user.games) { %>
+                            <tr>
+                                <td><a href="/games/details/<%= u.game_id %>"><%= u.games.name %></a></td>
+                                <td><%= u.games.description%></td>
+                                <td><%= u.games.length %></td>
+                                <td><%= u.games.release_date.toISOString().split('T')[0] %></td>
+                                <td><%= u.to_when.toISOString().split('T')[0] %></td>
+                            </tr>
+                        <% } %>
+                    </tbody>
+                </table>
+            <% }else { %>
+                <p>Uzytkownik nie ma wypozyczonych zadnych gier</p>
+            <% } %>
+        <% } %>
+        <% } else { %>
+            <p>Nie znaleziono użytkownika o podanym id</p>
+        <% } %>
+    </main>
+    <%- include('../../fragments/footer.ejs') %>
+</body>
+</html>
